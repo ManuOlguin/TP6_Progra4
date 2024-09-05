@@ -1,12 +1,12 @@
 services:
   backend:
     build: 
-      context: ./tp3_app1_api
+      context: ./TP3_APP1
       dockerfile: Dockerfile
     ports:
       - "8081:81"
     volumes:
-      - ./tp3_app1_api/db.sqlite:/app/db.sqlite
+      - ./TP3_APP1/db.sqlite:/app/db.sqlite
 
   frontend:
     build:
