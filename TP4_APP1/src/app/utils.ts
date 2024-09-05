@@ -4,7 +4,7 @@
 export async function api<T>(url: string): Promise<T> {
     console.log('URL parameter:', url); // Add this line
 
-    const urlCompleta = `http://localhost:8081${url}`;
+    const urlCompleta = `http://18.224.251.62:81${url}`;
 
     const response = await fetch(urlCompleta);
     if (!response.ok) {
@@ -17,7 +17,7 @@ export interface ProductoParams { meli_id: string };
 export interface ProductoRespuesta { mensaje: string }
 
 export async function agregarProducto(params: ProductoParams): Promise<ProductoRespuesta> {
-    const urlCompleta = `http://localhost:8081/v1/producto`;
+    const urlCompleta = `http://18.224.251.62:81/v1/producto`;
 
     const response = await fetch(urlCompleta, {
         method: 'POST',
@@ -38,7 +38,7 @@ export async function agregarProducto(params: ProductoParams): Promise<ProductoR
 }
 
 export async function eliminarProducto(params: ProductoParams): Promise<ProductoRespuesta> {
-    const urlCompleta = `http://localhost:8081/v1/producto`;
+    const urlCompleta = `http://18.224.251.62:81/v1/producto`;
 
     const response = await fetch(urlCompleta, {
         method: 'DELETE',

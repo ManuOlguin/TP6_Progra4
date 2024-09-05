@@ -1,12 +1,21 @@
+version: '3'
+
+# Declare the network at the top level
+networks:
+  app-network:
+    driver: bridge
+
 services:
   backend:
     build: 
       context: ./TP3_APP1
       dockerfile: Dockerfile
     ports:
-      - "8081:81"
+      - "81:81"
     volumes:
       - ./TP3_APP1/db.sqlite:/app/db.sqlite
+    networks:
+      - app-network
 
   frontend:
     build:
@@ -15,6 +24,8 @@ services:
     depends_on:
       - backend
     environment:
-      - REACT_APP_BACKEND_URL=http://backend:8080  # URL del backend en la red de Docker
+      - REACT_APP_BACKEND_URL=http://18.224.251.62:81  # URL del backend en la red de Docker
     ports:
       - "8080:3000"
+    networks:
+      - app-network
