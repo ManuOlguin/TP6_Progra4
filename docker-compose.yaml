@@ -1,0 +1,20 @@
+services:
+  backend:
+    build: 
+      context: ./tp3_app1_api
+      dockerfile: Dockerfile
+    ports:
+      - "8081:81"
+    volumes:
+      - ./tp3_app1_api/db.sqlite:/app/db.sqlite
+
+  frontend:
+    build:
+      context: ./TP4_APP1
+      dockerfile: Dockerfile
+    depends_on:
+      - backend
+    environment:
+      - REACT_APP_BACKEND_URL=http://backend:8080  # URL del backend en la red de Docker
+    ports:
+      - "8080:3000"
